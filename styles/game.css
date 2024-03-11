@@ -1,11 +1,13 @@
 #game, .center{
 	height: 3rem;
 	margin-top: 1rem;
+    text-align: center;
 }
 h1{
+    text-align: center;
     font-size: 40px;
-    color: blue;
+    color: rgba(70, 115, 236, 0.986);
 }
 body {
-    background-color: blanchedalmond;
+    background-color: rgb(41, 41, 40);
 }
