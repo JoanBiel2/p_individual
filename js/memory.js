@@ -4,6 +4,13 @@ export var game = function(){
     const card = {
         current: back,
         clickable: true,
+        /*goFrontone: function (){
+            setTimeout(() => {
+            this.current = this.front;
+            this.clickable = false;
+            this.callback();
+            }, 1000);
+        },*/
         goBack: function (){
             setTimeout(() => {
                 this.current = back;
@@ -24,6 +31,7 @@ export var game = function(){
 
     return {
         init: function (call){
+            //card.goFrontone();
             var items = resources.slice(); // Copiem l'array
             items.sort(() => Math.random() - 0.5); // Aleatòria
             items = items.slice(0, pairs); // Agafem els primers
