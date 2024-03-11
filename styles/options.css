@@ -1,0 +1,37 @@
+body {
+    background-color: #2b2828;
+    text-align: center;
+}
+h1 {
+    color: #58b1e6;
+}
+
+label {
+    display: block;
+    margin-bottom: 5px;
+    color: #58b1e6;
+    font-weight: bold;
+}
+
+input[type="number"],
+select {
+    width: 5%;
+    padding: 10px;
+    margin-bottom: 50px;
+    border: 1px solid #242222;
+    border-radius: 4px;
+    box-sizing: border-box;
+}
+
+button {
+    padding: 10px 20px;
+    background-color: #64a0ee;
+    border: none;
+    border-radius: 4px;
+    color: #110e0e;
+    font-size: 16px;
+}
+button#default {
+    background-color: #cac4c4;
+    margin-right: 10px;
+}
