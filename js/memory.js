@@ -34,11 +34,11 @@ export var game = function(){
 
     return {
         init: function(call) {
-            var items = resources.slice(); // Copiamos el array
-            items.sort(() => Math.random() - 0.5); // Aleatoria
-            items = items.slice(0, pairs); // Tomamos los primeros
+            var items = resources.slice(); // Copiem l'array
+            items.sort(() => Math.random() - 0.5); // Aleatòria
+            items = items.slice(0, pairs); // Agafem els primers
             items = items.concat(items);
-            items.sort(() => Math.random() - 0.5); // Aleatoria
+            items.sort(() => Math.random() - 0.5); // Aleatòria
             var createdCards = items.map(item => Object.create(card, {front: {value: item}, callback: {value: call}}));
             createdCards.forEach(card => card.goFrontone());
         
