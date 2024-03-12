@@ -27,11 +27,10 @@ export var game = function(){
             this.callback();
         }
     };
-
-    var lastCard;
-    var pairs = 2;
-    var points = 100;
-
+        var lastCard;
+        var pairs = 2;
+        var points = 100;
+        
     return {
         init: function(call) {
             var items = resources.slice(); // Copiem l'array
@@ -43,6 +42,12 @@ export var game = function(){
             createdCards.forEach(card => card.goFrontone());
         
             return createdCards;
+        },
+
+        mod_options: function(options) {
+            lastCard;
+            pairs = 2;
+            points = 100;
         },
         click: function (card){
             if (!card.clickable) return;
