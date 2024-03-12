@@ -4,13 +4,16 @@ export var game = function(){
     const card = {
         current: back,
         clickable: true,
-        /*goFrontone: function (){
+        goFrontone: function () {
             setTimeout(() => {
-            this.current = this.front;
-            this.clickable = false;
-            this.callback();
-            }, 1000);
-        },*/
+                this.goFront();
+                this.clickable = false;
+                this.callback();
+                setTimeout(() => {
+                    this.goBack();
+                }, 1000);
+            }, 0);
+        },
         goBack: function (){
             setTimeout(() => {
                 this.current = back;
@@ -30,14 +33,16 @@ export var game = function(){
     var points = 100;
 
     return {
-        init: function (call){
-            //card.goFrontone();
-            var items = resources.slice(); // Copiem l'array
-            items.sort(() => Math.random() - 0.5); // Aleatòria
-            items = items.slice(0, pairs); // Agafem els primers
+        init: function(call) {
+            var items = resources.slice(); // Copiamos el array
+            items.sort(() => Math.random() - 0.5); // Aleatoria
+            items = items.slice(0, pairs); // Tomamos los primeros
             items = items.concat(items);
-            items.sort(() => Math.random() - 0.5); // Aleatòria
-            return items.map(item => Object.create(card, {front: {value:item}, callback: {value:call}}));
+            items.sort(() => Math.random() - 0.5); // Aleatoria
+            var createdCards = items.map(item => Object.create(card, {front: {value: item}, callback: {value: call}}));
+            createdCards.forEach(card => card.goFrontone());
+        
+            return createdCards;
         },
         click: function (card){
             if (!card.clickable) return;
