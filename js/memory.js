@@ -27,7 +27,7 @@ export var game = function(){
             this.callback();
         }
     };
-
+    
     var options = JSON.parse(localStorage.options||JSON.stringify(default_options));
     var lastCard;
     var pairs = options.pairs;
@@ -44,6 +44,12 @@ export var game = function(){
             createdCards.forEach(card => card.goFrontone());
         
             return createdCards;
+        },
+
+        mod_options: function(options) {
+            lastCard;
+            pairs = 2;
+            points = 100;
         },
         click: function (card){
             if (!card.clickable) return;
