@@ -11,15 +11,31 @@ export var game = function(){
                 this.callback();
                 setTimeout(() => {
                     this.goBack();
-                }, 1000);
+                }, 1000); 
             }, 0);
         },
         goBack: function (){
-            setTimeout(() => {
+            if (difficulty == "easy"){
+                setTimeout(() => {
                 this.current = back;
                 this.clickable = true;
                 this.callback();
-            }, 1000);
+                }, 1000);
+            }
+            else if (difficulty == "normal"){
+                setTimeout(() => {
+                    this.current = back;
+                    this.clickable = true;
+                    this.callback();
+                    }, 500);
+            }
+            else{
+                setTimeout(() => {
+                    this.current = back;
+                    this.clickable = true;
+                    this.callback();
+                    }, 100);
+            }
         },
         goFront: function (){
             this.current = this.front;
@@ -32,6 +48,7 @@ export var game = function(){
     var lastCard;
     var pairs = options.pairs;
     var points = 100;
+    var difficulty = options.difficulty
 
     return {
         init: function(call) {
@@ -44,12 +61,6 @@ export var game = function(){
             createdCards.forEach(card => card.goFrontone());
         
             return createdCards;
-        },
-
-        mod_options: function(options) {
-            lastCard;
-            pairs = 2;
-            points = 100;
         },
         click: function (card){
             if (!card.clickable) return;
@@ -64,7 +75,9 @@ export var game = function(){
                 }
                 else{
                     [card, lastCard].forEach(c=>c.goBack());
-                    points-=25;
+                    if (difficulty == "easy") points -=25;
+                    else if (difficulty == "normal") points -=34;
+                    else points -=50;
                     if (points <= 0){
                         alert ("Has perdut");
                         window.location.replace("../");
