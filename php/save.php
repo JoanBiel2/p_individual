@@ -10,9 +10,9 @@
 
     $encodeCards = json_encode($_SESSION['cards']);
 
-    $conn = oci_connect('u4000775', '*********', 'ORCLCDB');
+    $conn = oci_connect('u1987716', 'hpogutoy', 'ORCLCDB');
     $insert="INSERT INTO memory_save
-    (uuid, pairs, points, cards )
+    (uuid, pairs, points, cards)
     VALUES
     (:uuid, :pairs, :points, :cards )";
     $comanda = oci_parse($conn, $insert);
