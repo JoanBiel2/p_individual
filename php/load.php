@@ -7,7 +7,7 @@
     $ret->cards = $_SESSION['cards'];
     
     $conn = oci_connect('u1987716', 'hpogutoy', 'ORCLCDB');
-    $consulta = "SELECT uuidk, pairs, points, cards FROM memory_save";
+    $consulta = "SELECT id, pairs, points, cards FROM memory_save";
     $comanda = oci_parse($conn, $consulta);
     $fila = oci_fetch_array($comanda)
 
@@ -16,7 +16,6 @@
         $ret->points = $fila['POINTS'];
         $ret->cards = $fila['CARDS'];
     }
-
 
     # Baixar de la base de dades
     echo json_encode($ret);

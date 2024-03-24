@@ -14,7 +14,7 @@
     $insert="INSERT INTO memory_save
     (uuid, pairs, points, cards)
     VALUES
-    (:uuid, :pairs, :points, :cards )";
+    (:uuid, :pairs, :points, :cards)";
     $comanda = oci_parse($conn, $insert);
     oci_bind_by_name($comanda,":uuid", $_SESSION['uuid']);
     oci_bind_by_name($comanda,":pairs", $_SESSION['pairs']);
