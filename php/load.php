@@ -11,6 +11,13 @@
     $comanda = oci_parse($conn, $consulta);
     $fila = oci_fetch_array($comanda)
 
+    if $fila != false { 
+        $ret->pairs = $fila['PAIRS'];
+        $ret->points = $fila['POINTS'];
+        $ret->cards = $fila['CARDS'];
+    }
+
+
     # Baixar de la base de dades
     echo json_encode($ret);
 ?>
