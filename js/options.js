@@ -16,7 +16,6 @@ var options = function(){
     return { 
         applyChanges: function(){
             localStorage.options = JSON.stringify(options);
-            game.mod_options(options);
         },
         defaultValues: function(){
             options.pairs = default_options.pairs;
