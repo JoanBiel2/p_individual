@@ -17,10 +17,10 @@ export class PlayScene extends Phaser.Scene{
     }
 
     create() {
-        this.cameras.main.setBackgroundColor(0xBFFCFF);
+        this.cameras.main.setBackgroundColor(0x2b2828);
 
         this.g_cards = this.physics.add.staticGroup();
-        this.cards.forEach((c, i)=> this.g_cards.create(250 + 100*i, 300, c.current));
+        this.cards.forEach((c, i)=> this.g_cards.create(400 + 100*i, 150, c.current));
 
         this.g_cards.children.iterate((c, i) => {
             c.setInteractive();

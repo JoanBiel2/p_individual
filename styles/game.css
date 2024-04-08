@@ -1,7 +1,5 @@
 #game, .center{
-	height: 3rem;
-	margin-top: 1rem;
-    text-align: center;
+	justify-content: center;
 }
 h1{
     text-align: center;
