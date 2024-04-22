@@ -1,0 +1,17 @@
+<!DOCTYPE html> 
+<html>
+	<head>
+		<script src="../library/jquery.min.js"></script>
+        <script src="../js/mode.js"></script>
+        <title> Memory - Mode</title>
+	</head>
+	<body>
+		<h1>Mode de Joc</h1>
+        <label for="mode">Mode: </label>
+        <select id="mode">
+            <option value="normal" selected>Normal</option>
+            <option value="infinit">Infinit</option>
+        </select>
+        <button id="select">seleccionar</button>
+	</body>
+</html>
