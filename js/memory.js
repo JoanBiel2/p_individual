@@ -1,6 +1,6 @@
 export var game = function(){
     const back = '../resources/back.png';
-    const resources = ['../resources/cb.png', '../resources/co.png', '../resources/sb.png','../resources/so.png', '../resources/tb.png','../resources/to.png'];
+    const resources = ['../resources/sr.png','../resources/sg.png','../resources/tr.png','../resources/tg.png','../resources/cr.png','../resources/cg.png','../resources/cb.png', '../resources/co.png', '../resources/sb.png','../resources/so.png', '../resources/tb.png','../resources/to.png'];
     const card = {
         current: back,
         clickable: true,
