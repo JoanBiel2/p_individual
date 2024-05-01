@@ -9,3 +9,8 @@ h1{
 body {
     background-color: #2b2828;
 }
+h2{
+    text-align: center;
+    font-size: 40px;
+    color: rgba(70, 115, 236, 0.986);
+}

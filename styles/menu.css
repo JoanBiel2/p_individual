@@ -4,8 +4,6 @@
 	margin-right: auto;
 	text-align: center;
 }
-
-
 button.center{
 	width: 6rem;
 	height: 3rem;
@@ -19,7 +17,7 @@ button.center{
 button#options {
     background-color: #cac4c4;
 }
-button#exit {
+button#ranking {
     background-color: #cac4c4;
 }
 #title{

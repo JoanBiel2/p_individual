@@ -30,11 +30,12 @@ button {
     border-radius: 4px;
     color: #110e0e;
     font-size: 16px;
+    display: block;
+    margin-top: 10px;
+    margin-left: auto;
+    margin-right: auto;
 }
 button#default {
     background-color: #cac4c4;
     margin-right: 10px;
-}
-h2 {
-    color: #a3a3a3;
 }
