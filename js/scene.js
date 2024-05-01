@@ -17,27 +17,41 @@ export class PlayScene extends Phaser.Scene{
     }
 
     create() {
-        this.cameras.main.setBackgroundColor(0xBFFCFF);
-        var offset_x = 300;
-        var x = Math.trunc((this.game.config.width-(offset_x*2)) / 100);
-        this.g_cards = this.physics.add.staticGroup();
-        this.cards.forEach((c, i)=>{ 
-            this.g_cards.create(offset_x + 45 + (Math.trunc(i%x))*100, 90 + (Math.trunc(i/x)) * 150, c.current)
-        });
+        this.cameras.main.setBackgroundColor(0x2b2828);
 
-        this.g_cards.children.iterate((c, i) => {
-            c.setInteractive();
-            c.on('pointerup', ()=> gController.click(this.cards[i]));
+        const offsetX = 300;
+        const cardWidth = 90;
+        const cardHeight = 120;
+
+        this.g_cards = this.physics.add.staticGroup();
+
+        this.cards.forEach((card, index) => {
+            const col = index % 6;
+            const row = Math.floor(index / 6);
+            const xPos = offsetX + col * (cardWidth + 20);
+            const yPos = 90 + row * (cardHeight + 20);
+            const newCard = this.g_cards.create(xPos, yPos, card.current);
+            newCard.setInteractive();
+            newCard.on('pointerup', () => gController.click(card));
         });
-            
-        var buttonSave = this.add.graphics();
-        var buttonColor = 0x1998fa;
+        const buttonSave = this.add.graphics();
+        const buttonColor = 0x1998fa;
         buttonSave.fillStyle(buttonColor, 1);
-        buttonSave.fillRect(50, 90, 160, 80);
-        var buttonText = this.add.text(130, 120, 'SAVE', { fill: '#fff', fontSize: '24px' });
+        buttonSave.fillRect(200, 500, 160, 80);
+    
+        const buttonText = this.add.text(130, 120, 'Guardar', { fill: '#fff', fontSize: '24px' });
         buttonText.setOrigin(0.5);
+
         buttonSave.setInteractive(new Phaser.Geom.Rectangle(50, 90, 160, 80), Phaser.Geom.Rectangle.Contains);
-        buttonSave.on('pointerdown', ()=> gController.save());
+        buttonSave.on('pointerdown', () => gController.save());
+
+        this.updateCardsTextures();
+    }
+    
+    updateCardsTextures() {
+        this.g_cards.children.iterate((card, index) => {
+            card.setTexture(this.cards[index].current);
+        });
     }
 
     update() {

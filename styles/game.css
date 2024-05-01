@@ -1,3 +1,8 @@
+body {
+    background-color: #2b2828;
+    text-align: center;
+}
+
 #game, .center{
 	justify-content: center;
 }

@@ -1,21 +1,6 @@
 export var game = function(){
     const back = '../resources/back.png';
-    const resources = [
-        '../resources/cb.png', 
-        '../resources/cg.png', 
-        '../resources/co.png',
-        '../resources/cr.png',
-        '../resources/cy.png',
-        '../resources/tb.png', 
-        '../resources/tg.png', 
-        '../resources/to.png',
-        '../resources/tr.png',
-        '../resources/ty.png',
-        '../resources/sb.png', 
-        '../resources/sg.png', 
-        '../resources/so.png',
-        '../resources/sr.png',
-        '../resources/sy.png'
+    const resources = ['../resources/cb.png', '../resources/cg.png', '../resources/co.png','../resources/cr.png','../resources/tb.png', '../resources/tg.png', '../resources/to.png','../resources/tr.png','../resources/sb.png', '../resources/sg.png', '../resources/so.png','../resources/sr.png',
     ];
     const card = {
         current: back,

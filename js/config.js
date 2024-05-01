@@ -4,7 +4,7 @@ var config = {
     type: Phaser.AUTO,
     domCreateContainer: true,
     width: 1200,
-    height: 800,
+    height: 600,
     parent: 'game',
     scene: [PlayScene],
     physics: {
