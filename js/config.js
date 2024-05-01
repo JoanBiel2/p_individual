@@ -2,9 +2,10 @@ import { PlayScene } from "./scene.js";
 
 var config = {
     type: Phaser.AUTO,
+    donCreateContainer: true,
     width: 800,
     height: 600,
-    parent: '#game',
+    parent: 'game',
     scene: [PlayScene],
     physics: {
         default: 'arcade',
