@@ -3,8 +3,8 @@ import { PlayScene } from "./scene.js";
 var config = {
     type: Phaser.AUTO,
     donCreateContainer: true,
-    width: 800,
-    height: 600,
+    width: 1200,
+    height: 800,
     parent: 'game',
     scene: [PlayScene],
     physics: {

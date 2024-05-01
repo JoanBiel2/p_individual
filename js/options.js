@@ -1,17 +1,21 @@
 var options = function(){
     const default_options = {
         pairs:2,
-        difficulty:'normal'
+        difficulty:'normal',
+        difficulty2:1
     };
     
     var pairs = $('#pairs');
     var difficulty = $('#dif');
+    var difficulty2 = $('#dif2');
 
     var options = JSON.parse(localStorage.options||JSON.stringify(default_options));
     pairs.val(options.pairs);
     difficulty.val(options.difficulty);
+    difficulty2.val(options.difficulty2);
     pairs.on('change',()=>options.pairs = pairs.val());
     difficulty.on('change',()=>options.difficulty = difficulty.val());
+    difficulty2.on('change',()=>options.difficulty2 = difficulty2.val());
 
     return { 
         applyChanges: function(){
