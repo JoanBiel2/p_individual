@@ -2,7 +2,7 @@ import { PlayScene } from "./scene.js";
 
 var config = {
     type: Phaser.AUTO,
-    donCreateContainer: true,
+    domCreateContainer: true,
     width: 1200,
     height: 800,
     parent: 'game',
