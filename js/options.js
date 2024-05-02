@@ -1,59 +1,56 @@
-var options = function(){
+var options = (function(){
     const default_options = {
-        pairs:2,
-        difficulty:'normal',
-        leveldif:1,
-        pointRanking:0,
-        nickname: 'Usuari 1'
+        pairs: 2,
+        difficulty: 'normal',
+        dif2: 1,
+        pointRanking: 0
     };
     
     var pairs = $('#pairs');
-    var difficulty = $('#dif');
-    var leveldif = $('#leveldif');
-    var nickname = $('#nickname');
+    var difficulty = $('#difficulty');
+    var dif2 = $('#dif2');
 
-    var options = JSON.parse(localStorage.options||JSON.stringify(default_options));
+    var options = JSON.parse(localStorage.options || JSON.stringify(default_options));
     pairs.val(options.pairs);
     difficulty.val(options.difficulty);
-    leveldif.val(options.leveldif);
-    nickname.val(options.nickname);
-    pairs.on('change',()=>options.pairs = Number(pairs.val()));
-    difficulty.on('change',()=>options.difficulty = difficulty.val());
-    leveldif.on('change',()=>options.leveldif = Number(leveldif.val()));
-    nickname.on('change',()=>options.nickname = nickname.val());
+    dif2.val(options.dif2);
+    
+    pairs.on('change', function() {
+        options.pairs = parseInt(pairs.val()); // Actualizar el valor de pares en opciones
+    });
+
+    difficulty.on('change', function() {
+        options.difficulty = difficulty.val(); // Actualizar la dificultad en opciones
+    });
+
+    dif2.on('change', function() {
+        options.dif2 = parseInt(dif2.val()); // Actualizar dif2 en opciones
+    });
    
     return { 
         applyChanges: function(){
             options.pointRanking = 0;
-            if (localStorage.ranking === null){
-                options.ranking = [];
+            if (!localStorage.ranking) {
+                options.ranking = []; // Inicializar ranking si no existe en localStorage
             }
             localStorage.options = JSON.stringify(options);
         },
         defaultValues: function(){
             options.pairs = default_options.pairs;
             options.difficulty = default_options.difficulty;
-            options.leveldif = default_options.leveldif;
-            options.nickname = default_options.nickname;
+            options.dif2 = default_options.dif2;
             pairs.val(options.pairs);
             difficulty.val(options.difficulty);
-            leveldif.val(options.leveldif);
-            nickname.val(options.nickname);
+            dif2.val(options.dif2);
         }
     }
-}();
+})();
 
-$('#default').on('click',function(){
+$('#default').on('click', function(){
     options.defaultValues();
 });
 
-$('#apply').on('click',function(){
+$('#apply').on('click', function(){
     options.applyChanges(); 
     sessionStorage.mode = document.getElementById('mode').value;
-    if (document.getElementById('nickname').value == ""){
-        alert("Requiere añadir nombre de jugador!!!");
-    } else {
-        window.location.assign("../../html/phasergame.html");
-    }
-    
 });

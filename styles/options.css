@@ -4,6 +4,7 @@ body {
 }
 h1 {
     color: #58b1e6;
+    font-size: 36px;
 }
 
 label {
@@ -12,7 +13,11 @@ label {
     color: #58b1e6;
     font-weight: bold;
 }
-
+h2 {
+    color: #2d4483;
+    font-weight: bold;
+    font-size: 24px;
+}
 input[type="number"],
 select {
     width: 5%;
