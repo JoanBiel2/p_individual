@@ -35,9 +35,9 @@ export class PlayScene extends Phaser.Scene{
             newCard.on('pointerup', () => gController.click(card));
         });
         const buttonSave = this.add.graphics();
-        const buttonColor = 0x1998fa;
+        const buttonColor = 0x4672ec;
         buttonSave.fillStyle(buttonColor, 1);
-        buttonSave.fillRect(200, 500, 160, 80);
+        buttonSave.fillRect(65, 90, 130, 50);
     
         const buttonText = this.add.text(130, 120, 'Guardar', { fill: '#fff', fontSize: '24px' });
         buttonText.setOrigin(0.5);

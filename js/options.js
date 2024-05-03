@@ -2,36 +2,25 @@ var options = (function(){
     const default_options = {
         pairs: 2,
         difficulty: 'normal',
-        dif2: 1,
-        pointRanking: 0
+        dif2: 1
     };
     
     var pairs = $('#pairs');
-    var difficulty = $('#difficulty');
+    var difficulty = $('#dif');
     var dif2 = $('#dif2');
 
     var options = JSON.parse(localStorage.options || JSON.stringify(default_options));
     pairs.val(options.pairs);
     difficulty.val(options.difficulty);
     dif2.val(options.dif2);
-    
-    pairs.on('change', function() {
-        options.pairs = parseInt(pairs.val()); // Actualizar el valor de pares en opciones
-    });
+    pairs.on('change', () => options.pairs = Number(pairs.val()));
+    difficulty.on('change', () => options.difficulty = difficulty.val());
+    dif2.on('change', () => options.dif2 = Number(dif2.val()));
 
-    difficulty.on('change', function() {
-        options.difficulty = difficulty.val(); // Actualizar la dificultad en opciones
-    });
-
-    dif2.on('change', function() {
-        options.dif2 = parseInt(dif2.val()); // Actualizar dif2 en opciones
-    });
-   
     return { 
         applyChanges: function(){
-            options.pointRanking = 0;
-            if (!localStorage.ranking) {
-                options.ranking = []; // Inicializar ranking si no existe en localStorage
+            if (localStorage.ranking === null){
+                options.ranking = [];
             }
             localStorage.options = JSON.stringify(options);
         },
@@ -43,7 +32,7 @@ var options = (function(){
             difficulty.val(options.difficulty);
             dif2.val(options.dif2);
         }
-    }
+    };
 })();
 
 $('#default').on('click', function(){
@@ -52,5 +41,5 @@ $('#default').on('click', function(){
 
 $('#apply').on('click', function(){
     options.applyChanges(); 
-    sessionStorage.mode = document.getElementById('mode').value;
+    window.location.assign("../index.html");
 });
