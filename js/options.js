@@ -13,9 +13,9 @@ var options = (function(){
     pairs.val(options.pairs);
     difficulty.val(options.difficulty);
     dif2.val(options.dif2);
-    pairs.on('change', () => options.pairs = Number(pairs.val()));
+    pairs.on('change', () => options.pairs = (pairs.val()));
     difficulty.on('change', () => options.difficulty = difficulty.val());
-    dif2.on('change', () => options.dif2 = Number(dif2.val()));
+    dif2.on('change', () => options.dif2 = (dif2.val()));
 
     return { 
         applyChanges: function(){
