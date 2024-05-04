@@ -47,13 +47,11 @@ export var game = function(){
     
     var options = JSON.parse(localStorage.options||JSON.stringify(default_options));
     var lastCard;
-    var dif2 = options.dif2
-    if (sessionStorage.mode == "normal"){
-        alert (aaaa)
-    }
+    var dif2 = options.dif2;
     var pairs = options.pairs;
     var points = 100;
-    var difficulty = options.difficulty
+    var rondas = 0;
+    var difficulty = options.dif
 
     return {
         init: function(call) {
@@ -74,23 +72,51 @@ export var game = function(){
                 if (card.front === lastCard.front){
                     pairs--;
                     if (pairs <= 0){
-                        alert("Has guanyat amb " + points + " punts!");
-                        window.location.replace("../");
+                        if (sessionStorage.mode == "normal"){
+                            alert("Has guanyat amb " + points + " punts!");
+                            window.location.replace("../");
+                        }
+                        else {
+                            rondas += 1;
+                            options.dif2 += 1;
+                            localStorage.options = JSON.stringify(options);
+                            window.location.reload()
+                        }
                     }
                 }
                 else{
                     [card, lastCard].forEach(c=>c.goBack());
-                    if (difficulty == "easy") points -=25;
-                    else if (difficulty == "normal") points -=34;
-                    else points -=50;
+                    if (sessionStorage.mode == "normal"){
+                        if (difficulty == "easy") points -=25;
+                        else if (difficulty == "normal") points -=34;
+                        else points -=50;
+                    }
+                    else {
+                        points -= dif2
+                    }
                     if (points <= 0){
                         alert ("Has perdut");
+                        if (sessionStorage.mode == "infinit"){
+                            options.ranking.push([sessionStorage.nickname,rondas])
+                        }
                         window.location.replace("../");
                     }
                 }
                 lastCard = null;
             }
             else lastCard = card; // Primera carta
+        },
+        guardar: function(){
+            var partida = {
+                uuid: localStorage.uuid,
+                pairs: pairs,
+                points: points,
+                dif2: dif2,
+                difficulty: difficulty,
+                cards: []
+            };
+            localStorage.save = JSON.stringify(partida);
+            window.location.replace("../");
         }
     }
 }();
