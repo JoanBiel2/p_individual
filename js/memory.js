@@ -57,8 +57,9 @@ export var game = function(){
     }
     var points = 100;
     var rondas = 0;
-    var difficulty = options.dif
-
+    var difficulty = options.dif;
+    var createdCards = [];
+    
     return {
         init: function(call) {
             var items = resources.slice(); // Copiem l'array
@@ -120,10 +121,17 @@ export var game = function(){
                 points: points,
                 dif2: dif2,
                 difficulty: difficulty,
-                cards: []
+                createdCards: []
             };
+            createdCards.forEach(c=>{
+                partida.createdCards.push({
+                    current: c.current,
+                    front: c.front,
+                });
+            });
             localStorage.save = JSON.stringify(partida);
             window.location.replace("../");
         }
+        
     }
 }();
