@@ -48,7 +48,13 @@ export var game = function(){
     var options = JSON.parse(localStorage.options||JSON.stringify(default_options));
     var lastCard;
     var dif2 = options.dif2;
-    var pairs = options.pairs;
+    var pairs;
+    if (sessionStorage.mode == "normal"){ 
+        pairs = options.pairs;
+    } else {
+        options.dif2 = parseInt(options.dif2);
+        pairs = dif2++;
+    }
     var points = 100;
     var rondas = 0;
     var difficulty = options.dif
@@ -77,6 +83,7 @@ export var game = function(){
                             window.location.replace("../");
                         }
                         else {
+                            rondas = parseInt(rondas);
                             rondas += 1;
                             options.dif2 += 1;
                             localStorage.options = JSON.stringify(options);
