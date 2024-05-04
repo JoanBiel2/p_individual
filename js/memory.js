@@ -47,6 +47,7 @@ export var game = function(){
     
     var options = JSON.parse(localStorage.options||JSON.stringify(default_options));
     var lastCard;
+    var dif2 = options.dif2
     var pairs = options.pairs;
     var points = 100;
     var difficulty = options.difficulty
